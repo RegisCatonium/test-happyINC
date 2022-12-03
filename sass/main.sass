@@ -1,0 +1,178 @@
+@import config
+
+.wrapper
+	display: flex
+	justify-content: center
+	align-items: center
+	width: 100%
+	height: 100%
+	background-color: #333
+
+.canvas
+	padding: 4.8rem 3rem 5rem 5rem
+	width: 31rem
+	height: 50rem
+	position: relative
+	background-color: #fff
+	&::before
+		content: '\e90e'
+		font-family: icomoon
+		font-size: 5rem
+		line-height: 1
+		color: #ccc
+		position: absolute
+		top: 1.5rem
+		left: 14.7rem
+
+@keyframes render
+	0%
+		stroke-dasharray: 0 10000
+
+.chart
+	transform-origin: center
+	transform: rotate(-73deg)
+	&__circle
+		fill: none
+		stroke-width: 10
+		stroke: var(--clr)
+		stroke-linecap: round // закругление концов окружности
+		animation: render 5s ease
+		&:first-child
+			animation: none
+
+.legend
+	display: block
+	width: 15.8rem
+	max-height: 19rem
+	text-align: center
+	position: absolute
+	top: 8.3rem
+	left: 8.7rem
+	&__precent
+		font-size: 3.5rem
+		position: relative
+		span
+			font-size: .5em
+		&::before
+			content: '%'
+			font-size: .5em
+			color: #acacac
+			position: absolute
+			top: 0
+			right: 4.2rem
+	&__title
+		font-size: 2.4rem
+		font-family: $gotham
+		font-weight: 700
+		span
+			font-size: .7em
+			color: $color-1
+			font-weight: 600
+
+	&__description
+		font-size: 1.2rem
+		color: #acacac
+		line-height: 1.35
+	&__num
+		padding-left: 2.4rem
+		font-size: 1.8rem
+		color: $color-2
+		line-height: 1.8
+		position: relative
+		&::before
+			content: ''
+			display: block
+			border-style: solid
+			font-size: 1.6rem
+			border-width: .6em .5em 0 .5em
+			border-color: $color-2 transparent
+			transform: rotate(180deg)
+			position: absolute
+			top: 34%
+			left: 5.6rem
+
+.caption
+	margin: 0
+	margin-top: 5rem
+	padding: 0
+	list-style-type: none
+	&__item
+		display: flex
+		justify-content: space-between
+		margin-bottom: 1.5rem
+		&:last-child
+			margin-bottom: 0
+
+	&__text
+		min-width: 8.2rem
+		font-size: 1.2rem
+		font-weight: 600
+
+	&__amount
+		text-align: right
+		font-size: 1.2rem
+		font-weight: 600
+		span
+			display: block
+			font-weight: normal
+			color: rgba(#9d9d9c, .6)
+			&::after
+				content: '\e90d'
+				margin-left: .4rem
+				font-family: icomoon
+				color: #9d9d9c
+
+	&__precent
+		display: block
+		width: 8.6rem
+		height: 3.2rem
+		font-size: 1.2rem
+		padding-top: .6rem
+		padding-right: .4rem
+		text-align: right
+		border: 2px solid darken(#f9f9f9, 4%)
+		border-radius: 5px
+		background-color: #f9f9f9
+		position: relative
+		&::before
+			content: ''
+			width: 3rem
+			height: 2.4rem
+			background-color: $color-2
+			border-top-left-radius: 5px
+			position: absolute
+			top: -0.2rem
+			left: -0.2rem
+			animation: anim 4.5s ease
+		&::after
+			content: ''
+			width: 2.8rem
+			height: .8rem
+			background-color: rgba($color-2, .3)
+			border-bottom-left-radius: 5px
+			position: absolute
+			bottom: -0.2rem
+			left: -0.2rem
+			animation: anim 5s ease
+		&_yellow
+			&::before
+				width: 3.2rem
+				background-color: $color-1
+			&::after
+				background-color: rgba($color-1, .3)
+		&_red
+			&::before
+				width: 2.6rem
+				background-color: $color-3
+			&::after
+				width: 3.2rem
+				background-color: rgba($color-3, .3)
+
+@keyframes anim
+	0%
+		width: 0
+
+.line
+	position: absolute
+	top: 15.5rem
+	left: 1rem
